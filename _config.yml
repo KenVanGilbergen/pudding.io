@@ -1,5 +1,9 @@
 ﻿
-url: https://pudding.io   # with the https protocol
-enforce_ssl: pudding.io   # without any protocol
+url: https://pudding.io
+enforce_ssl: pudding.io
 
-exclude: ["LICENSE", "README.md", "pudding.io.sln"]
+exclude: 
+  - LICENSE
+  - README.md
+  - pudding.io.sln
+
