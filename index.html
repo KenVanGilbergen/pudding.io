@@ -2,10 +2,53 @@
 layout: default
 ---
 
-    
 <h3 style="text-align:center;">Do whatever you want<br/>
 Try to live a full time passion<br/>
 Meet a melting pot of people<br/>
 Discover the world through adventures on the mat<br/>
 It's all up to you</h3>
-	
+
+<!--<div ng-controller="fruitsController as vm">
+    <ul ng-hide="vm.loading">
+        <li ng-repeat="fruit in vm.fruits">[[fruit.Name]]</li>
+    </ul>
+</div>-->
+
+{% raw %}
+<div ng-controller="fruitsController as vm">
+    <ul ng-hide="vm.loading">
+        <li ng-repeat="fruit in vm.fruits">{{fruit.Name}}</li>
+    </ul>
+</div>
+{% endraw %}
+
+<script>
+    var api = "https://localhost:44300";
+
+    angular.module('app', []);
+    //angular.module('app', [], function ($interpolateProvider) {
+    //    $interpolateProvider.startSymbol('[[');
+    //    $interpolateProvider.endSymbol(']]');
+    //});
+    angular.module('app').controller('fruitsController', function($http) {
+        var vm = this;
+
+        vm.fruits = [];
+
+        vm.load = function() {
+            if (vm.loading) return;
+            vm.loading = true;
+            $http.get(api + "/api/fruits").then(
+                function (response) {
+                    vm.fruits = response.data;
+                    vm.loading = false;
+                },
+                function (response) {
+                    alert(response.data.ExceptionMessage);
+                    vm.loading = false;
+                });
+        }
+
+        vm.load();
+    });
+</script>

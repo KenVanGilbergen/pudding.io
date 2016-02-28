@@ -1,4 +1,4 @@
-﻿<html>
+﻿<html ng-app="app">
     <head>
         <meta charset="utf-8" />
         <link rel="canonical" href="https://pudding.io{{ page.url }}" />
@@ -9,6 +9,7 @@
         if (url.indexOf(github) > -1) window.location = url.replace(github, host);
         if ((host == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
     </head>
 
     <body>

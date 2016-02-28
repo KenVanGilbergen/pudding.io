@@ -1,4 +1,11 @@
-## pudding.io
+# pudding.io
+
+* Setup github pages
+* Install identity server
+* Call api without security
+* Call api with security
+
+## Setup github project pages
 
 * create github repository
 * create gh-pages branch
@@ -18,7 +25,7 @@
 * ensure html contains canonical
 * ensure html contains redirect
 
-## more
+### more
 
 * https://help.github.com/categories/customizing-github-pages/
 
