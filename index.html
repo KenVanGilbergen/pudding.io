@@ -1,8 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <link rel="canonical" href="{{site.url}}{{page.url}}" />
+    <script type="text/javascript">
+        //TODO: replace original location with correct redirect
+        var github = "kenvangilbergen.github.io";
+        if (github == window.location.host) window.location.host = "pudding.io";
+        var host = "pudding.io";
+        if ((host == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
+    </script>
 </head>
 <body>
     <h1>pudding.io</h1>
