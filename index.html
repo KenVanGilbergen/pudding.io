@@ -5,11 +5,10 @@
     <meta charset="utf-8" />
     <link rel="canonical" href="{{site.url}}{{page.url}}" />
     <script type="text/javascript">
-        //TODO: replace original location with correct redirect
-        var github = "kenvangilbergen.github.io";
-        if (github == window.location.host) window.location.host = "pudding.io";
         var host = "pudding.io";
-        if ((host == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
+        var github = "kenvangilbergen.github.io/pudding.io";
+        //if (window.location.indexOf(github) > -1) window.location = window.location.replace(github, host);
+        //if ((host == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
     </script>
 </head>
 <body>
