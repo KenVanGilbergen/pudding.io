@@ -15,16 +15,26 @@ It's all up to you</h3>
 </div>-->
 
 {% raw %}
+
 <div ng-controller="fruitsController as vm">
+    <div ng-click="vm.load()">Click this to load the fruits</div>
     <ul ng-hide="vm.loading">
         <li ng-repeat="fruit in vm.fruits">{{fruit.Name}}</li>
     </ul>
 </div>
+
+<div ng-controller="accountController as vm">
+    <div ng-click="vm.load()">Click this to load the account</div>
+    <div ng-hide="vm.loading">
+        {{ vm.account | json }}
+    </div>
+</div>
+
 {% endraw %}
 
 <script>
-    var api = "https://api.ken.be";
-    //var api = "https://localhost:44300";
+    //var api = "https://api.ken.be";
+    var api = "https://localhost:44300";
 
     angular.module('app', []);
     //angular.module('app', [], function ($interpolateProvider) {
@@ -33,8 +43,6 @@ It's all up to you</h3>
     //});
     angular.module('app').controller('fruitsController', function($http) {
         var vm = this;
-
-        vm.fruits = [];
 
         vm.load = function() {
             if (vm.loading) return;
@@ -45,11 +53,31 @@ It's all up to you</h3>
                     vm.loading = false;
                 },
                 function (response) {
-                    alert(response.data.ExceptionMessage);
+                    console.log(response.status);
+                    console.log(response.statusText);
+                    alert(response.data.Message);
                     vm.loading = false;
                 });
         }
+    });
 
-        vm.load();
+    angular.module('app').controller('accountController', function ($http) {
+        var vm = this;
+
+        vm.load = function() {
+            if (vm.loading) return;
+            vm.loading = true;
+            $http.get(api + "/api/account").then(
+                function (response) {
+                    vm.account = response.data;
+                    vm.loading = false;
+                },
+                function (response) {
+                    console.log(response.status);
+                    console.log(response.statusText);
+                    alert(response.data.Message);
+                    vm.loading = false;
+                });
+        }
     });
 </script>
