@@ -5,7 +5,8 @@
         <script type="text/javascript">
         var host = "pudding.io";
         var github = "kenvangilbergen.github.io/pudding.io";
-        if (window.location.indexOf(github) > -1) window.location = window.location.replace(github, host);
+        var url = window.location.toString();
+        if (url.indexOf(github) > -1) window.location = url.replace(github, host);
         if ((host == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
         </script>
     </head>
